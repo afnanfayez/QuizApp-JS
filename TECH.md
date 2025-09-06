@@ -99,4 +99,5 @@
    -clear storage
 
 ✅ **7. Passing percentage should be 70% (quiz)**
+
 ✅ **8. result container should not appear if not all questions are answered** 

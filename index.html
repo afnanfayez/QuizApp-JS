@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="quiz-header">
+      <div class="header-icon">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <h1>Quiz App</h1>
+      <p class="subtitle">Answer all questions before submitting</p>
+    </header>
+
+    <main class="quiz-content">
+      <div id="questions-container" class="questions-container"></div>
+
+      <div class="quiz-controls">
+        <button id="reset-btn" class="btn btn-secondary">
+          <i class="fa-solid fa-rotate-left"></i> Reset
+        </button>
+        <button id="submit-btn" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane"></i> Submit
+        </button>
+      </div>
+
+      <div id="results-container" class="results-container hidden">
+        <div class="results-content">
+          <h2><i class="fa-solid fa-chart-line"></i> Quiz Results</h2>
+          <div class="score-display">
+            <span id="score-text" class="score-text"></span>
+            <span id="pass-fail-text" class="pass-fail-text"></span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
