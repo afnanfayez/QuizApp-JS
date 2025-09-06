@@ -1,3 +1,4 @@
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,7 @@
 }
 
 body {
-  background: linear-gradient(135deg,#6196ec, #bed3f8);
+  background: linear-gradient(135deg, #6196ec, #bed3f8);
   color: #333;
   display: flex;
   justify-content: center;
@@ -15,6 +16,7 @@ body {
   padding: 20px;
 }
 
+/* Container */
 .container {
   width: 100%;
   max-width: 800px;
@@ -27,7 +29,7 @@ body {
 /* Header */
 .quiz-header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .header-icon {
@@ -51,41 +53,48 @@ body {
 .questions-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px; /* تباعد أكبر بين الأسئلة */
   margin-bottom: 20px;
 }
 
+/* Question Card */
 .question-card {
   background: #f8f9fa;
-  padding: 15px 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #2575fc;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
 .question-text {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
+/* Options */
 .options {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .options label {
   background: #fff;
-  padding: 10px;
+  padding: 12px 15px;
   border-radius: 8px;
   border: 1px solid #ddd;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-.options input[type="radio"],
-.options input[type="checkbox"] {
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .options label:hover {
@@ -93,15 +102,35 @@ body {
   border-color: #2575fc;
 }
 
+.options input[type="radio"],
+.options input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.options input[type="radio"]:checked + span,
+.options input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #2575fc;
+}
+
+/* Numbering Questions */
+.question-card::before {
+  content: attr(data-question-number) ". ";
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2575fc;
+}
+
 /* Buttons */
 .quiz-controls {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .btn {
-  padding: 12px 18px;
+  padding: 12px 20px;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -132,20 +161,20 @@ body {
 
 /* Results Section */
 .results-container {
-  margin-top: 25px;
+  margin-top: 30px;
   text-align: center;
 }
 
 .results-content {
   background: #f9fafc;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .results-content h2 {
   color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .score-display {
@@ -161,7 +190,7 @@ body {
 
 .pass-fail-text {
   font-size: 1.3rem;
-  color: #2575fc;
+  font-weight: bold;
 }
 
 /* Success & Fail Colors */
@@ -173,16 +202,29 @@ body {
   color: #dc3545;
 }
 
+/* Fade-in animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .quiz-controls {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .btn {
     width: 100%;
     justify-content: center;
   }
-}
 
+  .question-card {
+    padding: 15px 20px;
+  }
+}
