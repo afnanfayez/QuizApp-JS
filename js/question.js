@@ -1,16 +1,32 @@
 export default class Question {
-  constructor(id, text, choices, correctAnswer) {
+  constructor(id, text, options, correctAnswer) {
     this._id = id;
     this._text = text;
-    this._choices = choices;
+    this._options = options;
     this._correctAnswer = correctAnswer;
   }
 
-  isCorrect(answer) {
-    throw new Error("isCorrect must be implemented in subclass");
+  get id() {
+    return this._id;
+  }
+
+  get text() {
+    return this._text;
+  }
+
+  get options() {
+    return this._options;
+  }
+
+  get correctAnswer() {
+    return this._correctAnswer;
+  }
+
+  isCorrect(userAnswer) {
+    throw new Error("isCorrect() must be implemented in subclass");
   }
 
   render() {
-    throw new Error("render must be implemented in subclass");
+    throw new Error("render() must be implemented in subclass");
   }
 }

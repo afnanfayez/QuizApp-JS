@@ -1,18 +1,49 @@
 export default class Storage {
-  constructor(key) {
-    this._key = key;
+  constructor(storageKey = "quizApp") {
+    this._storageKey = storageKey;
   }
 
   save(data) {
-    localStorage.setItem(this._key, JSON.stringify(data));
+    try {
+      const serializedData = JSON.stringify(data);
+      localStorage.setItem(this._storageKey, serializedData);
+      return true;
+    } catch (error) {
+      console.error("Error saving to localStorage:", error);
+      return false;
+    }
+  
   }
 
   load() {
-    const data = localStorage.getItem(this._key);
-    return data ? JSON.parse(data) : {};
+    try {
+      const serializedData = localStorage.getItem(this._storageKey);
+      if (serializedData === null) {
+        return null;
+      }
+      return JSON.parse(serializedData);
+    } catch (error) {
+      console.error("Error loading from localStorage:", error);
+      return null;
+    }
   }
 
   clear() {
-    localStorage.removeItem(this._key);
+    try {
+      localStorage.removeItem(this._storageKey);
+      return true;
+    } catch (error) {
+      console.error("Error clearing localStorage:", error);
+      return false;
+    }
+  }
+
+  exists() {
+    try {
+      return localStorage.getItem(this._storageKey) !== null;
+    } catch (error) {
+      console.error("Error checking localStorage:", error);
+      return false;
+    }
   }
 }
